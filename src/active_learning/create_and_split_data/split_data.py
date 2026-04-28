@@ -13,6 +13,8 @@ def split_csv_test_validation_pool(data_csv_path=DATA_MAIN_CSV_PATH, test_size=T
     pool_df, val_df = train_test_split(trainval_df, test_size=val_size, random_state=random_state, stratify=trainval_df["label"])
 
     pool_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    validation_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    test_split_save_path.parent.mkdir(parents=True, exist_ok=True)
 
     pool_df.to_csv(pool_split_save_path, index=False)
     val_df.to_csv(validation_split_save_path, index=False)
@@ -24,6 +26,9 @@ def split_csv_initial_training_set(pool_csv_path=POOL_SPLIT_SAVE_PATH, initial_t
 
     initial_train_df, remaining_pool_df = train_test_split(pool_df, test_size=(len(pool_df) - initial_training_size) / len(pool_df), random_state=random_state, stratify=pool_df["label"])
 
+    initial_train_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    initial_remaining_pool_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    
     initial_train_df.to_csv(initial_train_split_save_path, index=False)
     remaining_pool_df.to_csv(initial_remaining_pool_split_save_path, index=False)
 
