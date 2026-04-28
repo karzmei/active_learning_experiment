@@ -13,6 +13,8 @@ def split_csv_test_validation_pool(data_csv_path=DATA_MAIN_CSV_PATH, test_size=T
     pool_df, val_df = train_test_split(trainval_df, test_size=val_size, random_state=random_state, stratify=trainval_df["label"])
 
     pool_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    validation_split_save_path.parent.mkdir(parents=True, exist_ok=True)
+    test_split_save_path.parent.mkdir(parents=True, exist_ok=True)
 
     pool_df.to_csv(pool_split_save_path, index=False)
     val_df.to_csv(validation_split_save_path, index=False)
