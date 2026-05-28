@@ -23,15 +23,16 @@ def split_csv_test_validation_pool(data_csv_path=DATA_MAIN_CSV_PATH, test_size=T
 
 def split_csv_initial_training_set(pool_csv_path=POOL_SPLIT_SAVE_PATH, initial_training_size=1000, random_state=INITIAL_DATA_SPLIT_SEED, initial_train_split_save_path=INITIAL_TRAINING_SPLIT_SAVE_PATH, initial_remaining_pool_split_save_path=INITIAL_REMAINING_POOL_SPLIT_SAVE_PATH):
     pool_df = pd.read_csv(pool_csv_path)
+    number_of_classes = pool_df["label"].nunique()
+    initial_training_df = pool_df.groupby("label", group_keys=False).sample(initial_training_size // number_of_classes, random_state=random_state)
 
-    initial_train_df, remaining_pool_df = train_test_split(pool_df, test_size=(len(pool_df) - initial_training_size) / len(pool_df), random_state=random_state, stratify=pool_df["label"])
+    remaining_pool_df = pool_df.drop(index=initial_training_df.index)
 
     initial_train_split_save_path.parent.mkdir(parents=True, exist_ok=True)
     initial_remaining_pool_split_save_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    initial_train_df.to_csv(initial_train_split_save_path, index=False)
-    remaining_pool_df.to_csv(initial_remaining_pool_split_save_path, index=False)
 
+    initial_training_df.to_csv(initial_train_split_save_path, index=False)
+    remaining_pool_df.to_csv(initial_remaining_pool_split_save_path, index=False)
 
 if __name__ == "__main__":
     split_csv_test_validation_pool()
