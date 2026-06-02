@@ -2,7 +2,7 @@ from pathlib import Path
 from torchvision.datasets import EuroSAT
 import pandas as pd
 
-from src.active_learning.utils.constants import DATA_MAIN_DIR_PATH, DATA_FOLDERS_PATH, DATA_MAIN_CSV_PATH
+from src.active_learning.utils.constants import DATA_MAIN_DIR_PATH, DATA_FOLDERS_PATH, DATA_MAIN_CSV_PATH, DataSplitColNames
 
 def download_data(data_dir_path: Path = DATA_MAIN_DIR_PATH):
     dataset = EuroSAT(
@@ -21,7 +21,10 @@ def create_main_data_table(data_dir_path: Path = DATA_FOLDERS_PATH, path_to_save
         relative_paths.extend(relative_img_paths)
         labels.extend([class_dir_path.stem] * len(relative_img_paths))
 
-    df = pd.DataFrame({"relative_path": relative_paths, "label": labels})
+    df = pd.DataFrame({
+        DataSplitColNames.RELATIVE_PATH: relative_paths,
+        DataSplitColNames.LABEL: labels
+    })
 
     df.to_csv(path_to_save_csv, index=False)
 
