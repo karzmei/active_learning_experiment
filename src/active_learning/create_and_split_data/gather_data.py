@@ -23,7 +23,7 @@ def create_main_data_table(data_dir_path: Path = DATA_FOLDERS_PATH, path_to_save
 
     df = pd.DataFrame({
         DataSplitColNames.RELATIVE_PATH: relative_paths,
-        DataSplitColNames.LABEL: labels
+        DataSplitColNames.CLASS_NAME: labels
     })
 
     df.to_csv(path_to_save_csv, index=False)

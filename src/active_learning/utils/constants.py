@@ -24,7 +24,7 @@ class BaseSplitNames(StrEnum):
 
 class DataSplitColNames(StrEnum):
     RELATIVE_PATH = "relative_path"
-    LABEL = "label"
+    CLASS_NAME = "class_name"
     BASE_SPLIT = "base_split"
 
 if __name__ == "__main__":
