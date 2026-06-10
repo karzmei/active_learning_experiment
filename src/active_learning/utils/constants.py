@@ -27,5 +27,24 @@ class DataSplitColNames(StrEnum):
     CLASS_NAME = "class_name"
     BASE_SPLIT = "base_split"
 
+EUROSAT_CLASS_TO_IDX = {
+    "AnnualCrop": 0,
+    "Forest": 1,
+    "HerbaceousVegetation": 2,
+    "Highway": 3,
+    "Industrial": 4,
+    "Pasture": 5,
+    "PermanentCrop": 6,
+    "Residential": 7,
+    "River": 8,
+    "SeaLake": 9,
+}
+
+EUROSAT_IDX_TO_CLASS = {
+    idx: class_name
+    for class_name, idx in EUROSAT_CLASS_TO_IDX.items()
+}
+
+
 if __name__ == "__main__":
     print(f"BASE_DIR: {BASE_DIR}")
