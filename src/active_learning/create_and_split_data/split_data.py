@@ -2,10 +2,10 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 
 
-from src.active_learning.utils.constants import DATA_MAIN_CSV_PATH, TEST_SPLIT_SIZE, VALIDATION_SPLIT_SIZE, BASE_DATA_SPLIT_CSV_PATH
+from src.active_learning.utils.constants import DATA_MAIN_CSV_PATH, TEST_SPLIT_SIZE, BASE_DATA_SPLIT_CSV_PATH, VALIDATION_SPLIT_SIZE_OUT_OF_TRAINING_POOL
 from src.active_learning.utils.constants import INITIAL_DATA_SPLIT_SEED, BaseSplitNames, DataSplitColNames
 
-def split_csv_test_validation_pool(data_csv_path=DATA_MAIN_CSV_PATH, test_size=TEST_SPLIT_SIZE, val_size=VALIDATION_SPLIT_SIZE, random_state=INITIAL_DATA_SPLIT_SEED, base_data_split_save_path=BASE_DATA_SPLIT_CSV_PATH):
+def split_csv_test_validation_pool(data_csv_path=DATA_MAIN_CSV_PATH, test_size=TEST_SPLIT_SIZE, val_size=VALIDATION_SPLIT_SIZE_OUT_OF_TRAINING_POOL, random_state=INITIAL_DATA_SPLIT_SEED, base_data_split_save_path=BASE_DATA_SPLIT_CSV_PATH):
     data_df = pd.read_csv(data_csv_path)
 
     trainval_df, test_df = train_test_split(data_df, test_size=test_size, random_state=random_state, stratify=data_df[DataSplitColNames.CLASS_NAME])
