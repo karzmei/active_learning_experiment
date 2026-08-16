@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=82"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "eurosat-active-learning"
+version = "0.1.0"
+description = "Active-learning strategy experiments using the EuroSAT dataset"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.4,<3",
+    "pandas>=3.0,<4",
+    "Pillow>=12.1,<13",
+    "scikit-learn>=1.8,<2",
+    "torch>=2.10,<2.11",
+    "torchvision>=0.25,<0.26",
+    "tqdm>=4.67,<5",
+]
+
+
+[project.optional-dependencies]
+analysis = [
+    "ipykernel>=7.2,<8",
+    "matplotlib>=3.10,<4",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
