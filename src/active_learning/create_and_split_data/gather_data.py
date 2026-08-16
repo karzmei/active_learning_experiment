@@ -2,7 +2,7 @@ from pathlib import Path
 from torchvision.datasets import EuroSAT
 import pandas as pd
 
-from src.active_learning.utils.constants import DATA_MAIN_DIR_PATH, DATA_FOLDERS_PATH, DATA_MAIN_CSV_PATH, DataSplitColNames
+from active_learning.utils.constants import DATA_MAIN_DIR_PATH, DATA_FOLDERS_PATH, DATA_MAIN_CSV_PATH, DataSplitColNames
 
 def download_data(data_dir_path: Path = DATA_MAIN_DIR_PATH):
     dataset = EuroSAT(

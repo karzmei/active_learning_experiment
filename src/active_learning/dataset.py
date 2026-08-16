@@ -1,8 +1,8 @@
 from torch.utils.data import Dataset
 from PIL import Image
 
-from src.active_learning.utils.constants import DataSplitColNames, EUROSAT_CLASS_TO_IDX
-from src.active_learning.utils.image_transforms import model_preprocessing_transform
+from active_learning.utils.constants import DataSplitColNames, EUROSAT_CLASS_TO_IDX
+from active_learning.utils.image_transforms import model_preprocessing_transform
 
 
 class EuroSATDataset(Dataset):
