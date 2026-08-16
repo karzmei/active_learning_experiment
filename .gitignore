@@ -1,0 +1,7 @@
+data/
+aux_pics/
+venv/
+src/active_learning/create_and_split_data/__pycache__
+src/active_learning/__pycache__/
+src/active_learning/utils/__pycache__/
+.vscode
