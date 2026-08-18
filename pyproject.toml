@@ -26,6 +26,9 @@ analysis = [
     "matplotlib>=3.10,<4",
 ]
 
+test = [
+    "pytest>=8,<9",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
